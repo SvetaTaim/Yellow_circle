@@ -1,14 +1,13 @@
 import sys
 import random
-from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QPainter, QColor
+from ui_file import Ui_MainWindow
 
-
-class YellowCircle(QMainWindow):
+class YellowCircle(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
         self.active = False
         self.pushButton.clicked.connect(self.run)
 
@@ -29,7 +28,10 @@ class YellowCircle(QMainWindow):
             x = random.randrange(0, 590, 1)
             y = random.randrange(0, 500, 1)
             r = random.randrange(1, 100, 1)
-            qp.setBrush(QColor('yellow'))
+            red = random.randrange(0, 255, 1)
+            green = random.randrange(0, 255, 1)
+            blue = random.randrange(0, 255, 1)
+            qp.setBrush(QColor(red, green, blue))
             qp.drawEllipse(x, y, r, r)
 
 
